@@ -1,4 +1,10 @@
-const initState = {
+import { AddAction, ToggleAction, TodoModel} from '../actions';
+
+interface State {
+    todos: TodoModel[];
+}
+
+const initState: State = {
     todos: [{
         id: 1,
         name: `Tell about init TypeScript project`,
@@ -34,13 +40,32 @@ const initState = {
     }],
 }
 
-export default function(state = initState, action) {
+export default function(state: State = initState, action: AddAction | ToggleAction): State {
     switch (action.type) {
         case 'ADD': {
-            return state;
+            const { todo } = action.payload;
+            return {
+                todos: [
+                    ...state.todos,
+                    {...todo}
+                ]
+            }
         }
         case 'TOGGLE': {
-            return state;   
+            const { id } = action.payload;
+
+            return {
+                todos: state.todos.map(todo => {
+                    if (todo.id !== id) {
+                        return todo;
+                    }
+
+                    return {
+                        ...todo,
+                        checked: !todo.checked
+                    }
+                })
+            }
         }
         default: {
             return state;
