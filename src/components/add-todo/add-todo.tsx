@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../ui/button/button';
-import Input from '../ui/input/input';
+import Input, { BrandNewEvent } from '../ui/input/input';
 import './add-todo.css';
 
 interface Props {
@@ -39,8 +39,8 @@ export default class AddTodo extends React.PureComponent<Props, State> {
         )
     }
 
-    private handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-        const { value } = event.target;
+    private handleChange = (event: BrandNewEvent) => {
+        const { value } = event.event.target;
 
         this.setState({ value });
     }
