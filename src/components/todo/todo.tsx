@@ -1,9 +1,15 @@
 import React from 'react';
 import './todo.css';
 
-export default class Todo extends React.PureComponent {
+interface Props<T = number> {
+    id: T
+    checked: boolean;
+    onToggle: (id: T) => void;
+}
+
+export default class Todo extends React.PureComponent<Props> {
     render() {
-        const { children, checked } = this.props;
+        const { checked, children } = this.props;
 
         return (
             <li
@@ -14,7 +20,7 @@ export default class Todo extends React.PureComponent {
         );
     }
 
-    handleClick = () => {
+    private handleClick = () => {
         const { id, onToggle } = this.props;
 
         onToggle(id);
