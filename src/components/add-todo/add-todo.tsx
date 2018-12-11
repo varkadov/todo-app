@@ -3,7 +3,15 @@ import Button from '../button/button';
 import Input from '../input/input';
 import './add-todo.css';
 
-export default class AddTodo extends React.PureComponent {
+interface Props {
+    onAdd: (value: string) => void;
+}
+
+interface State {
+    value: string;
+}
+
+export default class AddTodo extends React.PureComponent<Props, State> {
     state = { value: '' }
 
     render() {
@@ -30,13 +38,13 @@ export default class AddTodo extends React.PureComponent {
         )
     }
 
-    handleChange = (event) => {
+    private handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         const { value } = event.target;
 
         this.setState({ value });
     }
 
-    handleSubmit = (event) => {
+    private handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
 
         const { value } = this.state;
