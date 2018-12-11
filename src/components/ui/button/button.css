@@ -2,3 +2,11 @@
     box-sizing: border-box;
     width: 100%;
 }
+
+.button_red {
+    background-color: lightcoral;
+}
+
+.button_blue {
+    background-color: lightskyblue;
+}
