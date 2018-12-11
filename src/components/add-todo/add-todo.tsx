@@ -29,7 +29,7 @@ export default class AddTodo extends React.PureComponent<Props, State> {
                 </div>
                 <div className='col_2'>
                     <Button
-                        color='blue'
+                        design='green'
                         fullWidth
                         disabled={!value}>
                         Add
