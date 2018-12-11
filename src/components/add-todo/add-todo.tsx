@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '../button/button';
-import Input from '../input/input';
+import Button from '../ui/button/button';
+import Input from '../ui/input/input';
 import './add-todo.css';
 
 interface Props {
